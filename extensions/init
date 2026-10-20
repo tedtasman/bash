@@ -1,6 +1,5 @@
-. ~/.config/bash/extensions/prompt.sh
-
-. ~/.config/bash/extensions/eza.sh
-
 . ~/.config/bash/extensions/easytar.sh
+. ~/.config/bash/extensions/eza.sh
 . ~/.config/bash/extensions/kitty.sh
+. ~/.config/bash/extensions/neovim.sh
+. ~/.config/bash/extensions/prompt.sh
