@@ -1,0 +1,8 @@
+. ~/.config/bash/extensions/init
+
+. ~/.config/bash/aliases.sh
+. ~/.config/bash/variables.sh
+
+if [ -f ~/.config/bash/secret.sh ]; then
+    . ~/.config/bash/secret.sh
+fi
