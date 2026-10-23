@@ -1,3 +1,3 @@
-if [ -f /opt/nvim ]; then
+if [ -e /opt/nvim ]; then
     export PATH="$PATH:/opt/nvim/"
 fi
