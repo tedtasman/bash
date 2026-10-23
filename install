@@ -1,11 +1,39 @@
 #!/usr/bin/env bash
+set -eou pipefail
+
+if ! grep -q "bash/init" ~/.bashrc; then
+    echo "" >> ~/.bashrc
+    echo "# dtfmgr3 - source ~/.config/bash/init" >> ~/.bashrc
+    echo "if [ -f ~/.config/bash/init ]; then" >> ~/.bashrc
+    echo "    . ~/.config/bash/init" >> ~/.bashrc
+    echo "fi" >> ~/.bashrc
+fi
+
+# source bashrc
+. ~/.bashrc
 SCRIPT_PATH="$(readlink -f "${BASH_SOURCE[0]}")"
 SCRIPT_DIR="$(dirname "$SCRIPT_PATH")"
 NAME="${SCRIPT_DIR##*/}" 
 
+# check if name is available
 if [ -e "$HOME/.config/$NAME" ]; then
     printf "$NAME already exists in ~/.config\n"
     exit 1
 fi
 
-ln -s "$SCRIPT_DIR" "$HOME/.config/$NAME" && printf "$NAME config installed\n"
+# create symlink
+ln -s "$SCRIPT_DIR" "$HOME/.config/$NAME"
+
+# add source to bashrc if not there
+if ! grep -q "bash/init" ~/.bashrc; then
+    echo "" >> ~/.bashrc
+    echo "# dtfmgr3 - source ~/.config/bash/init" >> ~/.bashrc
+    echo "if [ -f ~/.config/bash/init ]; then" >> ~/.bashrc
+    echo "    . ~/.config/bash/init" >> ~/.bashrc
+    echo "fi" >> ~/.bashrc
+fi
+
+# source bashrc
+. ~/.bashrc
+
+printf "$NAME config installed\n"
