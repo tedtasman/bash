@@ -1,5 +1,5 @@
 if [[ -f `which eza` ]]; then
-    alias ls='eza'
+    [[ -f `which viewer` ]] || alias ls='eza'
     alias ll='eza -l --no-permissions --no-user --no-filesize --time-style=relative --group-directories-first'
     alias llr='eza -l --no-permissions --no-user --no-filesize --time-style=relative --group-directories-first --sort=modified --reverse'
     alias llq='eza -l --no-permissions --no-user --no-filesize --time-style=relative --group-directories-first --no-time'
